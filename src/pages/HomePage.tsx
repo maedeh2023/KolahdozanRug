@@ -46,8 +46,7 @@ export function HomePage({
             srcSet="/images/editorial/hero-desktop.png"
           />
           <img
-            src="/images/editorial/hero-mobile.png"
-            alt="Kolahdoozan Persian Handmade Carpet"
+           src={`${import.meta.env.BASE_URL}images/editorial/hero-mobile.png`}            alt="Kolahdoozan Persian Handmade Carpet"
             className="h-full w-full object-cover object-center"
           />
         </picture>

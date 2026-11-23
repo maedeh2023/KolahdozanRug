@@ -1,27 +1,25 @@
+
 @import "tailwindcss";
 
+/* =========================================
+   KOOLAHDOOZAN — DARK LUXURY COLOR SYSTEM
+========================================= */
+
 :root {
-
-  
-
   --atelier-ink: #F1E5D1;
   --atelier-muted: #B9A28A;
   --atelier-line: rgba(197, 157, 96, 0.25);
   --atelier-brass: #C49A5A;
-
   --atelier-bg: #190B0B;
   --atelier-surface: #281211;
   --atelier-card: #351715;
   --atelier-burgundy: #651F20;
   --atelier-gold: #D6B77B;
-
-  --atelier-bg: #FAF7F1;
-  --atelier-surface: #F2ECE1;
-  --atelier-ink: #171614;
-  --atelier-muted: #5C554C;
-  --atelier-brass: #83612F;
-  --atelier-line: #E2D9C8;
 }
+
+/* =========================================
+   GLOBAL
+========================================= */
 
 html {
   scroll-behavior: smooth;
@@ -29,21 +27,22 @@ html {
 }
 
 body {
-
-
-
-
   font-family: 'Vazirmatn', 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
-   background-color: var(--atelier-bg);
+  background-color: var(--atelier-bg);
   color: var(--atelier-ink);
   overflow-x: hidden;
 }
+
+/* =========================================
+   TYPOGRAPHY SYSTEM
+========================================= */
 
 .font-serif-display {
   font-family: 'Cormorant Garamond', Georgia, serif;
 }
 
-/* Classical Traditional Calligraphic Persian (Amiri royal manuscript Naskh) */
+/* Classical Traditional Calligraphic Persian */
+
 .font-traditional-display {
   font-family: 'Amiri', 'Noto Naskh Arabic', serif;
 }
@@ -53,7 +52,8 @@ body {
   font-style: italic;
 }
 
-/* Modern Minimalist Architectural Persian Sans (Vazirmatn) */
+/* Modern Minimalist Architectural Persian Sans */
+
 .font-modern-sans {
   font-family: 'Vazirmatn', system-ui, sans-serif;
 }
@@ -66,6 +66,8 @@ body {
   font-family: 'Vazirmatn', system-ui, sans-serif;
 }
 
+/* Logo treatments */
+
 .logo-on-ivory {
   filter: brightness(0.08) contrast(1.1);
 }
@@ -74,11 +76,16 @@ body {
   filter: brightness(0) invert(1);
 }
 
+/* =========================================
+   ANIMATIONS
+========================================= */
+
 @keyframes fadeUpSlow {
   from {
     opacity: 0.92;
     transform: translateY(8px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -94,29 +101,41 @@ body {
     transform: translateX(-140%) skewX(-20deg);
     opacity: 0;
   }
+
   78% {
     opacity: 0.45;
   }
+
   92% {
     transform: translateX(240%) skewX(-20deg);
     opacity: 0;
   }
+
   100% {
     transform: translateX(240%) skewX(-20deg);
     opacity: 0;
   }
 }
 
+/* =========================================
+   LUXURY BUTTONS
+========================================= */
+
 /* Haute-Atelier Brushed Metallic Action Button */
+
 .btn-atelier-gold {
   position: relative;
   overflow: hidden;
   border-radius: 2px;
+
   box-shadow:
     inset 0 1px 0 rgba(255, 250, 240, 0.55),
     inset 0 -1px 0 rgba(40, 22, 6, 0.42),
     0 16px 34px -10px rgba(0, 0, 0, 0.78);
-  transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1), filter 0.25s ease;
+
+  transition:
+    transform 0.25s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 0.25s ease;
 }
 
 .btn-atelier-gold::after {
@@ -124,7 +143,14 @@ body {
   position: absolute;
   inset: 0;
   width: 45%;
-  background: linear-gradient(90deg, transparent, rgba(255, 252, 244, 0.55), transparent);
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 252, 244, 0.55),
+    transparent
+  );
+
   animation: satinSweep 5.5s ease-in-out infinite;
   pointer-events: none;
 }
@@ -134,45 +160,69 @@ body {
 }
 
 /* Smoked Obsidian Architectural Secondary Button */
+
 .btn-atelier-glass {
   position: relative;
   border-radius: 2px;
+
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
+
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.08),
     0 10px 24px -12px rgba(0, 0, 0, 0.75);
-  transition: background-color 0.25s ease, border-color 0.25s ease, transform 0.2s ease;
+
+  transition:
+    background-color 0.25s ease,
+    border-color 0.25s ease,
+    transform 0.2s ease;
 }
 
 .btn-atelier-glass:active {
   transform: scale(0.985);
 }
 
+/* =========================================
+   TEXTURE EFFECTS
+========================================= */
+
 /* Subtle Film / Silk Texture Veil */
+
 .atelier-grain {
-  background-image: radial-gradient(rgba(255, 255, 255, 0.05) 0.55px, transparent 0.55px);
+  background-image: radial-gradient(
+    rgba(255, 255, 255, 0.05) 0.55px,
+    transparent 0.55px
+  );
   background-size: 3px 3px;
 }
 
 /* Hide scrollbars cleanly on horizontal macro contact strips */
+
 .no-scrollbar::-webkit-scrollbar {
   display: none;
 }
+
 .no-scrollbar {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
 
-/* Scroll-choreographed Silk Curtain Reveal (triggered via JS IntersectionObserver) */
+/* =========================================
+   SCROLL REVEAL ANIMATIONS
+========================================= */
+
+/* Scroll-choreographed Silk Curtain Reveal */
+
 .reveal-curtain {
   clip-path: inset(8% 0 12% 0);
   opacity: 0.25;
   transform: scale(1.06) translateY(20px);
+
   transition:
     clip-path 1.05s cubic-bezier(0.22, 1, 0.36, 1),
     transform 1.15s cubic-bezier(0.22, 1, 0.36, 1),
     opacity 0.85s ease;
+
   will-change: clip-path, transform, opacity;
 }
 
@@ -185,9 +235,11 @@ body {
 .reveal-fade {
   opacity: 0;
   transform: translateY(22px);
+
   transition:
     opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
     transform 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+
   will-change: opacity, transform;
 }
 
@@ -196,15 +248,21 @@ body {
   transform: translateY(0);
 }
 
+/* =========================================
+   HOTSPOT ANIMATION
+========================================= */
+
 @keyframes pulsePin {
   0% {
     transform: scale(0.92);
     opacity: 0.75;
   }
+
   70% {
     transform: scale(1.85);
     opacity: 0;
   }
+
   100% {
     transform: scale(1.85);
     opacity: 0;
@@ -215,9 +273,10 @@ body {
   animation: pulsePin 2.4s cubic-bezier(0.22, 1, 0.36, 1) infinite;
 }
 
-/* ==========================================================================
-   AUTHENTIC PERSIAN TYPOGRAPHY SUITE & LUXURY LIGHTING FX (100% LOCAL FONTS)
-   ========================================================================== */
+/* =========================================
+   AUTHENTIC PERSIAN TYPOGRAPHY
+   LOCAL FONTS
+========================================= */
 
 @font-face {
   font-family: 'IranNastaliq';
@@ -307,7 +366,10 @@ body {
   font-display: swap;
 }
 
-/* Authentic Persian Font Classes */
+/* =========================================
+   AUTHENTIC PERSIAN FONT CLASSES
+========================================= */
+
 .font-nastaliq {
   font-family: 'IranNastaliq', 'Gulzar', cursive, serif;
   line-height: 2.3 !important;
@@ -352,28 +414,56 @@ body {
   font-family: 'Scheherazade New', serif;
 }
 
-/* 10 Luxury Lighting & Shadow FX */
+/* =========================================
+   LUXURY LIGHTING & SHADOW EFFECTS
+========================================= */
 
 /* 1. Embossed Burnished Gold Leaf */
+
 .typo-fx-gold {
-  background: linear-gradient(135deg, #FFF8DC 0%, #F5D77F 22%, #D4AF37 48%, #936C18 78%, #F7E096 100%);
+  background: linear-gradient(
+    135deg,
+    #FFF8DC 0%,
+    #F5D77F 22%,
+    #D4AF37 48%,
+    #936C18 78%,
+    #F7E096 100%
+  );
+
   background-size: 200% auto;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  filter: drop-shadow(0 4px 14px rgba(212, 175, 55, 0.45)) drop-shadow(0 16px 36px rgba(0, 0, 0, 0.9));
+
+  filter:
+    drop-shadow(0 4px 14px rgba(212, 175, 55, 0.45))
+    drop-shadow(0 16px 36px rgba(0, 0, 0, 0.9));
 }
 
 /* 2. Glazed Lapis Ceramic Inlay */
+
 .typo-fx-lapis {
-  background: linear-gradient(135deg, #FFFFFF 0%, #BAE6FD 18%, #38BDF8 40%, #1D4ED8 75%, #0B1E48 100%);
+  background: linear-gradient(
+    135deg,
+    #FFFFFF 0%,
+    #BAE6FD 18%,
+    #38BDF8 40%,
+    #1D4ED8 75%,
+    #0B1E48 100%
+  );
+
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  filter: drop-shadow(0 0 24px rgba(56, 189, 248, 0.55)) drop-shadow(0 14px 30px rgba(0, 0, 0, 0.95));
+
+  filter:
+    drop-shadow(0 0 24px rgba(56, 189, 248, 0.55))
+    drop-shadow(0 14px 30px rgba(0, 0, 0, 0.95));
 }
 
 /* 3. Museum Chiaroscuro Spotlight */
+
 .typo-fx-chiaroscuro {
   color: #F8F5EE;
+
   text-shadow:
     0 1px 2px rgba(255, 255, 255, 0.85),
     0 8px 16px rgba(0, 0, 0, 0.85),
@@ -381,24 +471,48 @@ body {
 }
 
 /* 4. Wet Calligraphic Ink Bloom */
+
 .typo-fx-ink-bloom {
-  background: linear-gradient(180deg, #FFFFFF 0%, #EDE5D5 35%, #D4C3A3 70%, #9B8662 100%);
+  background: linear-gradient(
+    180deg,
+    #FFFFFF 0%,
+    #EDE5D5 35%,
+    #D4C3A3 70%,
+    #9B8662 100%
+  );
+
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  filter: drop-shadow(0 2px 4px rgba(237, 229, 213, 0.4)) drop-shadow(0 16px 38px rgba(0, 0, 0, 0.95));
+
+  filter:
+    drop-shadow(0 2px 4px rgba(237, 229, 213, 0.4))
+    drop-shadow(0 16px 38px rgba(0, 0, 0, 0.95));
 }
 
-/* 5. Sculpted Hammered Copper & Rim Light */
+/* 5. Sculpted Bas-Relief Stone */
+
 .typo-fx-copper {
-  background: linear-gradient(140deg, #FFF0E6 0%, #F6C492 25%, #D97736 60%, #7C3512 100%);
+  background: linear-gradient(
+    140deg,
+    #FFF0E6 0%,
+    #F6C492 25%,
+    #D97736 60%,
+    #7C3512 100%
+  );
+
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  filter: drop-shadow(0 0 18px rgba(246, 196, 146, 0.42)) drop-shadow(0 14px 32px rgba(0, 0, 0, 0.92));
+
+  filter:
+    drop-shadow(0 0 18px rgba(246, 196, 146, 0.42))
+    drop-shadow(0 14px 32px rgba(0, 0, 0, 0.92));
 }
 
 /* 6. Chiseled Bas-Relief Stone */
+
 .typo-fx-basrelief {
   color: #ECE5D8;
+
   text-shadow:
     -1.5px -1.5px 1px rgba(255, 255, 255, 0.85),
     1.5px 1.5px 2px rgba(20, 15, 10, 0.9),
@@ -407,8 +521,10 @@ body {
 }
 
 /* 7. Amber Twilight Glow */
+
 .typo-fx-amber-glow {
   color: #FFF6D6;
+
   text-shadow:
     0 0 16px rgba(251, 191, 36, 0.75),
     0 0 45px rgba(217, 119, 6, 0.45),
@@ -416,8 +532,10 @@ body {
 }
 
 /* 8. Velvet Luminescent Pearl */
+
 .typo-fx-pearl-velvet {
   color: #FCFBF7;
+
   text-shadow:
     0 0 8px rgba(255, 255, 255, 0.6),
     0 10px 24px rgba(0, 0, 0, 0.88),
@@ -425,22 +543,28 @@ body {
 }
 
 /* 9. Double Gilded Foil Outline */
+
 .typo-fx-double-gilt {
   color: #FAF4E6;
   -webkit-text-stroke: 1.2px #D4AF37;
+
   text-shadow:
     0 0 14px rgba(212, 175, 55, 0.45),
     0 12px 28px rgba(0, 0, 0, 0.95);
 }
 
 /* 10. Woven Textile Texture Mask */
+
 .typo-fx-woven-texture {
-  background-image: url('/images/rugs/kld-isf-25q-macro-angle.jpg');
+  background-image: url('/KolahdozanRug/images/rugs/kld-isf-25q-macro-angle.jpg');
   background-size: 280px;
   background-repeat: repeat;
   background-position: center;
+
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  filter: drop-shadow(0 2px 2px rgba(255, 255, 255, 0.45)) drop-shadow(0 14px 36px rgba(0, 0, 0, 0.95));
-}
 
+  filter:
+    drop-shadow(0 2px 2px rgba(255, 255, 255, 0.45))
+    drop-shadow(0 14px 36px rgba(0, 0, 0, 0.95));
+}

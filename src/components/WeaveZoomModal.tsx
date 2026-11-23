@@ -46,18 +46,22 @@ export function WeaveZoomModal({
     if (!open) return;
 
     const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') onClose();
+      if (event.key === 'Escape') {
+        onClose();
+      }
 
       if (event.key === 'ArrowRight') {
         setActiveIndex((prev) =>
-          Math.min(prev + (isFa ? -1 : 1), slides.length - 1),
+          Math.min(prev + (isFa ? -1 : 1), slides.length - 1)
         );
+        setPanOrigin({ x: 50, y: 50 });
       }
 
       if (event.key === 'ArrowLeft') {
         setActiveIndex((prev) =>
-          Math.max(prev + (isFa ? 1 : -1), 0),
+          Math.max(prev + (isFa ? 1 : -1), 0)
         );
+        setPanOrigin({ x: 50, y: 50 });
       }
     };
 
@@ -74,7 +78,7 @@ export function WeaveZoomModal({
 
   const safeIndex = Math.min(
     Math.max(activeIndex, 0),
-    slides.length - 1,
+    slides.length - 1
   );
 
   const current = slides[safeIndex];
@@ -82,7 +86,7 @@ export function WeaveZoomModal({
   const handleMove = (
     clientX: number,
     clientY: number,
-    el: HTMLDivElement,
+    el: HTMLElement
   ) => {
     if (zoomScale === 1) return;
 
@@ -90,12 +94,12 @@ export function WeaveZoomModal({
 
     const x = Math.max(
       0,
-      Math.min(100, ((clientX - rect.left) / rect.width) * 100),
+      Math.min(100, ((clientX - rect.left) / rect.width) * 100)
     );
 
     const y = Math.max(
       0,
-      Math.min(100, ((clientY - rect.top) / rect.height) * 100),
+      Math.min(100, ((clientY - rect.top) / rect.height) * 100)
     );
 
     setPanOrigin({ x, y });
@@ -114,6 +118,7 @@ export function WeaveZoomModal({
     >
       {/* Ambient lighting */}
       <div className="pointer-events-none absolute -top-40 left-1/2 h-96 w-96 -translate-x-1/2 rounded-full bg-[#8E3B36]/15 blur-[100px]" />
+
       <div className="pointer-events-none absolute bottom-0 right-0 h-72 w-72 rounded-full bg-[#C49A5A]/[0.07] blur-[100px]" />
 
       {/* Header */}
@@ -161,20 +166,25 @@ export function WeaveZoomModal({
             handleMove(
               e.touches[0].clientX,
               e.touches[0].clientY,
-              e.currentTarget,
+              e.currentTarget
             );
           }
         }}
         className="relative flex min-h-0 flex-1 touch-none items-center justify-center overflow-hidden px-4 py-5 sm:px-8"
-        style={{ cursor: zoomScale > 1 ? 'crosshair' : 'default' }}
+        style={{
+          cursor: zoomScale > 1 ? 'crosshair' : 'default',
+        }}
       >
         {/* Decorative frame */}
         <div className="pointer-events-none absolute inset-x-5 inset-y-5 sm:inset-x-12 sm:inset-y-8">
           <div className="absolute inset-0 border border-[#C49A5A]/15" />
 
-          <span className="absolute -top-px -left-px h-5 w-5 border-l border-t border-[#D6B77B]/65" />
-          <span className="absolute -top-px -right-px h-5 w-5 border-r border-t border-[#D6B77B]/65" />
+          <span className="absolute -left-px -top-px h-5 w-5 border-l border-t border-[#D6B77B]/65" />
+
+          <span className="absolute -right-px -top-px h-5 w-5 border-r border-t border-[#D6B77B]/65" />
+
           <span className="absolute -bottom-px -left-px h-5 w-5 border-b border-l border-[#D6B77B]/65" />
+
           <span className="absolute -bottom-px -right-px h-5 w-5 border-b border-r border-[#D6B77B]/65" />
         </div>
 
@@ -190,14 +200,16 @@ export function WeaveZoomModal({
                 transform: `scale(${zoomScale})`,
                 transformOrigin: `${panOrigin.x}% ${panOrigin.y}%`,
               }}
-              className="block max-h-[68vh] max-w-full object-contain select-none transition-transform duration-150"
+              className="block max-h-[68vh] max-w-full select-none object-contain transition-transform duration-150"
             />
           </div>
 
           {/* Image counter */}
           <div className="absolute -bottom-9 left-1/2 -translate-x-1/2 whitespace-nowrap font-serif-display text-[10px] tracking-[0.22em] text-[#D6B77B]/75">
             {String(safeIndex + 1).padStart(2, '0')}
+
             <span className="mx-2 text-[#C49A5A]/50">/</span>
+
             {String(slides.length).padStart(2, '0')}
           </div>
         </div>
@@ -209,6 +221,7 @@ export function WeaveZoomModal({
         onClick={(e) => e.stopPropagation()}
       >
         <div className="mx-auto max-w-lg space-y-4">
+
           {/* Zoom controls */}
           <div className="flex items-center justify-between gap-4">
             <div className="space-y-0.5">
@@ -217,7 +230,9 @@ export function WeaveZoomModal({
               </p>
 
               <p className="text-[11px] text-[#B9A28A]">
-                {isFa ? 'بررسی جزئیات دست‌بافت' : 'Explore the handmade details'}
+                {isFa
+                  ? 'بررسی جزئیات دست‌بافت'
+                  : 'Explore the handmade details'}
               </p>
             </div>
 
@@ -272,7 +287,7 @@ export function WeaveZoomModal({
           </div>
 
           {/* Thumbnail gallery */}
-          <div className="flex items-center justify-center gap-2 overflow-x-auto py-1 no-scrollbar">
+          <div className="no-scrollbar flex items-center justify-center gap-2 overflow-x-auto py-1">
             {slides.map((slide, idx) => {
               const selected = idx === safeIndex;
 
@@ -286,7 +301,7 @@ export function WeaveZoomModal({
                   className={`group relative h-12 w-12 shrink-0 overflow-hidden border transition-all duration-300 ${
                     selected
                       ? 'border-[#D6B77B] p-[2px] shadow-[0_0_14px_rgba(196,154,90,0.22)]'
-                      : 'border-[#C49A5A]/20 opacity-55 hover:opacity-100 hover:border-[#C49A5A]/60'
+                      : 'border-[#C49A5A]/20 opacity-55 hover:border-[#C49A5A]/60 hover:opacity-100'
                   }`}
                 >
                   <img

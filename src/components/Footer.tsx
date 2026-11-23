@@ -1,4 +1,5 @@
-﻿import { ArrowUpRight, MapPin, Phone } from 'lucide-react';
+﻿
+import { ArrowUpRight, MapPin, Phone } from 'lucide-react';
 import { SITE_CONTENT } from '../data/content';
 import type { Lang, RouteView } from '../types';
 
@@ -8,7 +9,11 @@ interface FooterProps {
   onOpenInquiry: (pieceCode?: string) => void;
 }
 
-export function Footer({ lang, onNavigate, onOpenInquiry }: FooterProps) {
+export function Footer({
+  lang,
+  onNavigate,
+  onOpenInquiry,
+}: FooterProps) {
   const isFa = lang === 'fa';
 
   const featuredRugs = [
@@ -24,7 +29,7 @@ export function Footer({ lang, onNavigate, onOpenInquiry }: FooterProps) {
       slug: 'kld-isf-07p',
       color: '#A45C45',
     },
-  ];
+  ] as const;
 
   return (
     <footer
@@ -32,19 +37,19 @@ export function Footer({ lang, onNavigate, onOpenInquiry }: FooterProps) {
       dir={isFa ? 'rtl' : 'ltr'}
       className="relative overflow-hidden bg-[#190B0B] text-[#F1E5D1]"
     >
-      {/* ظرافت بالای فوتر */}
+      {/* Top decorative line */}
       <div className="h-px w-full bg-gradient-to-r from-transparent via-[#A98255]/70 to-transparent" />
 
-      {/* نورهای پس‌زمینه */}
+      {/* Background lights */}
       <div className="pointer-events-none absolute -top-40 left-1/4 h-80 w-80 rounded-full bg-[#651F20]/10 blur-[120px]" />
       <div className="pointer-events-none absolute bottom-0 right-0 h-72 w-72 rounded-full bg-[#8B5638]/10 blur-[120px]" />
 
       <div className="relative mx-auto max-w-[1440px] px-6 pb-8 pt-20 sm:px-10 lg:px-16">
 
-        {/* بخش اصلی */}
+        {/* Main footer content */}
         <div className="grid grid-cols-1 gap-14 border-b border-[#A98255]/20 pb-16 md:grid-cols-2 lg:grid-cols-[1.35fr_0.85fr_1fr] lg:gap-16">
 
-          {/* برند */}
+          {/* Brand */}
           <div className="max-w-md">
             <div className="mb-8 flex items-center gap-4">
               <img
@@ -81,11 +86,11 @@ export function Footer({ lang, onNavigate, onOpenInquiry }: FooterProps) {
             </button>
           </div>
 
-          {/* آثار منتخب */}
+          {/* Selected works */}
           <div>
             <div className="mb-8">
               <span className="text-[10px] tracking-[0.28em] text-[#A98255]">
-                {isFa ? 'THE COLLECTION' : 'THE COLLECTION'}
+                THE COLLECTION
               </span>
               <h3 className="mt-3 font-serif text-xl text-[#F1E5D1]">
                 {isFa ? 'آثار منتخب' : 'Selected Works'}
@@ -97,7 +102,10 @@ export function Footer({ lang, onNavigate, onOpenInquiry }: FooterProps) {
                 <button
                   key={rug.slug}
                   onClick={() =>
-                    onNavigate({ type: 'rug', slug: rug.slug })
+                    onNavigate({
+                      type: 'rug',
+                      slug: rug.slug,
+                    })
                   }
                   className="group flex w-full items-center gap-4 text-start"
                 >
@@ -110,6 +118,7 @@ export function Footer({ lang, onNavigate, onOpenInquiry }: FooterProps) {
                     <span className="block text-xs tracking-[0.12em] text-[#E5D6C1] transition-colors group-hover:text-[#D6B77B]">
                       {rug.code}
                     </span>
+
                     <span className="mt-2 block text-[11px] text-[#897765]">
                       {rug.description}
                     </span>
@@ -132,11 +141,11 @@ export function Footer({ lang, onNavigate, onOpenInquiry }: FooterProps) {
             </button>
           </div>
 
-          {/* ارتباط با ما */}
+          {/* Contact */}
           <div>
             <div className="mb-8">
               <span className="text-[10px] tracking-[0.28em] text-[#A98255]">
-                {isFa ? 'GET IN TOUCH' : 'GET IN TOUCH'}
+                GET IN TOUCH
               </span>
               <h3 className="mt-3 font-serif text-xl text-[#F1E5D1]">
                 {isFa ? 'با ما در ارتباط باشید' : 'Contact Us'}
@@ -150,10 +159,12 @@ export function Footer({ lang, onNavigate, onOpenInquiry }: FooterProps) {
                   strokeWidth={1.4}
                   className="mt-1 shrink-0 text-[#B78B58]"
                 />
+
                 <div>
                   <p className="mb-2 text-[10px] tracking-wider text-[#A98255]">
                     {isFa ? 'گالری اصفهان' : 'ISFAHAN SHOWROOM'}
                   </p>
+
                   <p className="text-xs leading-7 text-[#B9A28A]">
                     {SITE_CONTENT.brand.address[lang]}
                   </p>
@@ -189,7 +200,9 @@ export function Footer({ lang, onNavigate, onOpenInquiry }: FooterProps) {
                 >
                   Instagram
                 </a>
+
                 <span className="h-1 w-1 rounded-full bg-[#A98255]/60" />
+
                 <a
                   href={SITE_CONTENT.brand.pinterest}
                   target="_blank"
@@ -203,7 +216,7 @@ export function Footer({ lang, onNavigate, onOpenInquiry }: FooterProps) {
           </div>
         </div>
 
-        {/* نوار پایانی */}
+        {/* Bottom bar */}
         <div className="flex flex-col items-center justify-between gap-5 pt-7 text-[10px] text-[#8E7967] sm:flex-row">
           <p>
             {isFa

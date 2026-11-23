@@ -43,7 +43,7 @@ export function HomePage({
         <picture className="absolute inset-0 z-0">
           <source
             media="(min-width: 1024px)"
-            srcSet="/images/editorial/hero-desktop.png"
+srcSet={`${import.meta.env.BASE_URL}images/editorial/hero-desktop.png`}
           />
           <img
            src={`${import.meta.env.BASE_URL}images/editorial/hero-mobile.png`}            alt="Kolahdoozan Persian Handmade Carpet"
@@ -1062,7 +1062,6 @@ export function HomePage({
 
   <div className="
     pointer-events-none absolute inset-0 opacity-[0.035]
-    bg-[url('/images/editorial/pattern.png')]
   "/>
 
   <div className="
